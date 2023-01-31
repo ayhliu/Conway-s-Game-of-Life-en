@@ -1,63 +1,63 @@
-# 康威生命游戏
+# Conway's Game of Life
 
-## 矩形世界
+## Rectangular World
 
-黑为死亡，白为存活，点击方格更改状态。光标在方格上时右上角显示坐标。
+Black means dead. White means alive. Click on square cells to change their status. When cursor lands on a cell, its coordinate appears at upper right corner.
 
-世界左上角是原点。
+Most upper left cell is world origin.
 
-显示大小自适应，太小会不显示。
+Display is adaptive to screen size. No display if screen too small.
 
-## 操作界面
+## Interface Manual
 
-### 活
+### A
 
-存活细胞的数量。
+Number of cells alive.
 
-### 代
+### G
 
-第几代演化。更改世界属性会重置代。
+Generation. Modifying world properties will reset this to 0.
 
-### 存殖阈值
+### Thresh
 
-存活的细胞的邻居数量在前两个数之间则存活，否则死亡。
+A living cell survives if the number of its living neighbors is between the first two numbers, otherwise it dies.
 
-死亡的细胞的邻居数量在后两个数之间则变活（邻居繁殖），否则保持死亡。
+A dead cell becomes alive (reproduction) if the number of its living neighbors is between the last two numbers, otherwise it stays death.
 
-显然这四个数取值0~8，点设定生效。
+Clearly these four numbers have values 0-8. Click SET to apply changes.
 
-### 区域起点、区域大小
+### RGN O, RGN Size, ALL
 
-选择一片区域。全选、裁剪顾名思义。
+Select a region from a coordinate and a size into the bottom right direction. Clicking ALL selects the entire world. Crop applies on selected region.
 
-### 右上移距
+### UR Shift, Shift
 
-往右上角移动世界，点移动生效。兼容环面模式。
+Shift world some distance into the upper right direction in torus sense. Click Shift to apply.
 
-### 自动延迟
+### Delay
 
-自动播放功能每代之间的延迟。
+Delay between each generation's advance in auto play.
 
-### 随机
+### Rand
 
-随机生成世界。
+Randomizes world.
 
-### 清零
+### Clear
 
-全部死亡。
+All cell dies.
 
-### 前进
+### ADV
 
-进入下一代。
+Advance into next generation.
 
-### 环面模式
+### Torus
 
-上下边框相连、左右边框相连。
+Connect upper and bottom world edges, left and right world edges.
 
-### 镜像
+### Mirror
 
-按垂直中线翻转。
+Mirror world about center vertical line.
 
 ### 90°⭮
 
-世界顺时针转90度。
+World clockwise rotation.

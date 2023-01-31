@@ -50,18 +50,18 @@ public class View extends JPanel implements ActionListener {
 		this.model = model;
 		this.mainFrame = mainFrame;
 
-		aliveLabel = new JLabel("活 0");
-		generationLabel = new JLabel("代 0");
+		aliveLabel = new JLabel("A 0");
+		generationLabel = new JLabel("G 0");
 		mousePositionLabel = new JLabel();
 
 		model.setView(this);
 
-		JButton advanceButton = new JButton("前进");
-		JButton randomizeButton = new JButton("随机");
-		JButton clearButton = new JButton("清零");
-		JButton mirrorButton = new JButton("镜像");
+		JButton advanceButton = new JButton("ADV");
+		JButton randomizeButton = new JButton("Rand");
+		JButton clearButton = new JButton("CLR");
+		JButton mirrorButton = new JButton("Mirror");
 		JButton rotateButton = new JButton("90°\u2B6E");
-		JCheckBox torusCheckBox = new JCheckBox("环面模式");
+		JCheckBox torusCheckBox = new JCheckBox("Torus");
 
 		/* Thresholds */
 		lowSurviveThresholdText = new JTextField("2");
@@ -69,7 +69,7 @@ public class View extends JPanel implements ActionListener {
 		lowBirthThresholdText = new JTextField("3");
 		highBirthThresholdText = new JTextField("3");
 
-		JButton defineButton = new JButton("设定");
+		JButton defineButton = new JButton("SET");
 
 		/* Select */
 		gridWidthText = new JTextField(Integer.toString(model.getUniverseWidth()));
@@ -78,14 +78,14 @@ public class View extends JPanel implements ActionListener {
 		startXText = new JTextField("0");
 		startYText = new JTextField("0");
 
-		JButton selectAllButton = new JButton("全选");
-		JButton cropButton = new JButton("裁剪");
+		JButton selectAllButton = new JButton("ALL");
+		JButton cropButton = new JButton("Crop");
 
 		/* Move */
 		moveXText = new JTextField("0");
 		moveYText = new JTextField("0");
 
-		JButton moveButton = new JButton("移动");
+		JButton moveButton = new JButton("Shift");
 
 		/* Automation */
 		delayText = new JTextField("1");
@@ -117,7 +117,7 @@ public class View extends JPanel implements ActionListener {
 		thresholdsPanel.add(lowBirthThresholdText);
 		thresholdsPanel.add(highBirthThresholdText);
 
-		controlPanel.add(new JLabel("存殖阈值："));
+		controlPanel.add(new JLabel("Thresh"));
 		controlPanel.add(thresholdsPanel);
 		controlPanel.add(defineButton);
 
@@ -130,11 +130,11 @@ public class View extends JPanel implements ActionListener {
 		selectSizePanel.add(gridWidthText);
 		selectSizePanel.add(gridHeightText);
 
-		controlPanel.add(new JLabel("区域起点："));
+		controlPanel.add(new JLabel("RGN O"));
 		controlPanel.add(selectFromPanel);
 		controlPanel.add(selectAllButton);
 
-		controlPanel.add(new JLabel("区域大小："));
+		controlPanel.add(new JLabel("RGN Size"));
 		controlPanel.add(selectSizePanel);
 		controlPanel.add(cropButton);
 
@@ -144,7 +144,7 @@ public class View extends JPanel implements ActionListener {
 		movePanel.add(moveXText);
 		movePanel.add(moveYText);
 
-		controlPanel.add(new JLabel("右上移距："));
+		controlPanel.add(new JLabel("UR Shift"));
 		controlPanel.add(movePanel);
 		controlPanel.add(moveButton);
 
@@ -152,9 +152,9 @@ public class View extends JPanel implements ActionListener {
 		JPanel delayTextPanel = new JPanel(new GridLayout(1, 2));
 
 		delayTextPanel.add(delayText);
-		delayTextPanel.add(new JLabel("毫秒"));
+		delayTextPanel.add(new JLabel("ms"));
 
-		controlPanel.add(new JLabel("自动延迟："));
+		controlPanel.add(new JLabel("Delay"));
 		controlPanel.add(delayTextPanel);
 		controlPanel.add(autoButton);
 
@@ -222,19 +222,19 @@ public class View extends JPanel implements ActionListener {
 			model.toggleAutomation(1);
 			return;
 
-		case "前进":
+		case "ADV":
 			model.advance();
 			return;
 
-		case "清零":
+		case "CLR":
 			model.clear();
 			return;
 
-		case "随机":
+		case "Rand":
 			model.randomize();
 			return;
 
-		case "裁剪":
+		case "Crop":
 			try {
 				model.crop(Integer.parseInt(startXText.getText()), Integer.parseInt(startYText.getText()),
 						Integer.parseInt(gridWidthText.getText()), Integer.parseInt(gridHeightText.getText()));
@@ -244,7 +244,7 @@ public class View extends JPanel implements ActionListener {
 
 			return;
 
-		case "移动":
+		case "Shift":
 			try {
 				model.moveUniverse(Integer.parseInt(moveXText.getText()), Integer.parseInt(moveYText.getText()));
 			} catch (NumberFormatException f) {
@@ -254,7 +254,7 @@ public class View extends JPanel implements ActionListener {
 
 			return;
 
-		case "镜像":
+		case "Mirror":
 			model.mirror();
 			return;
 
@@ -262,13 +262,14 @@ public class View extends JPanel implements ActionListener {
 			model.rotate();
 			return;
 
-		case "设定":
+		case "SET":
 			model.setThresholds(thresholdRanger(lowSurviveThresholdText), thresholdRanger(highSurviveThresholdText),
 					thresholdRanger(lowBirthThresholdText), thresholdRanger(highBirthThresholdText));
 			return;
 
-		case "全选":
+		case "ALL":
 			update("SelectAll", null);
+			return;
 		}
 	}
 
@@ -299,12 +300,12 @@ public class View extends JPanel implements ActionListener {
 
 		/* Object is of Integer */
 		case "Live":
-			aliveLabel.setText("活 " + (int) o);
+			aliveLabel.setText("A " + (int) o);
 			return;
 
 		/* Object is of Integer */
 		case "Generation":
-			generationLabel.setText("代 " + (int) o);
+			generationLabel.setText("G " + (int) o);
 			return;
 
 		/* Object is null or of Integer[2] */

@@ -11,7 +11,7 @@ public class Main {
 			@Override
 			public void run() {
 				JFrame mainFrame = new JFrame();
-				mainFrame.setTitle("生命游戏");
+				mainFrame.setTitle("Game of Life");
 				mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 				mainFrame.setContentPane(new View(new Model(), mainFrame));
 				mainFrame.pack();
